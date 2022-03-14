@@ -9,7 +9,10 @@ public class Scr_FeedbacksManager : MonoBehaviour
 
     private VariablesPropretys variables;
 
-    [Header("   Frog")] [SerializeField] private GameObject fx_ToadCollected_Prefab;
+    [Header("   Frog")] 
+    [SerializeField] private GameObject fx_ToadCollected_Prefab;
+    [Header("   Toad")] 
+    [SerializeField] private GameObject fx_FrogEjected_Prefab;
 
     private void OnEnable()
     {
@@ -23,13 +26,18 @@ public class Scr_FeedbacksManager : MonoBehaviour
     }
 
 
-    public void ToadDefetead(GameObject toad)
+    public void ToadDefetead(GameObject toad,bool projectionLeft)
     {
         //On étire la grenouille
+        int direction = 0;
+        if (projectionLeft) direction = 180;
+        GameObject fx = Instantiate(fx_FrogEjected_Prefab, toad.transform);
+        fx.transform.Rotate(direction, 0.0f, 0.0f, Space.Self);
+
         tweener.Stretch(toad,new Vector3(1.2f,0.8f,0.8f),0.5f,0.1f);
         
         //Fait spawn FX: traits de vitesse
-        
+
         //Joue Son
         
         //Joue animation

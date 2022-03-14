@@ -8,7 +8,7 @@ public class Scr_ToadManager : Scr_P_Batracien,IRemoveFromTower
     private float moveSpeed;
     private VariablesPropretys variables;
 
-    [SerializeField]private BatracienType type = BatracienType.Toad;
+    [SerializeField]public BatracienType type = BatracienType.Toad;
 
     private void OnEnable()
     {
@@ -25,7 +25,7 @@ public class Scr_ToadManager : Scr_P_Batracien,IRemoveFromTower
             case ActionTypes.SwipeLeft:
                 if (type == BatracienType.ToadShieldLeft || type == BatracienType.Toad)
                 {
-                    FindObjectOfType<Scr_FeedbacksManager>().ToadDefetead(gameObject);
+                    FindObjectOfType<Scr_FeedbacksManager>().ToadDefetead(gameObject,true);
                     StartCoroutine(MoveToad(new Vector3(-1, 0, 0)));
                     return true;
                 }
@@ -40,7 +40,7 @@ public class Scr_ToadManager : Scr_P_Batracien,IRemoveFromTower
             case ActionTypes.SwipeRight:
                 if (type == BatracienType.ToadShieldRight || type == BatracienType.Toad)
                 {
-                    FindObjectOfType<Scr_FeedbacksManager>().ToadDefetead(gameObject);
+                    FindObjectOfType<Scr_FeedbacksManager>().ToadDefetead(gameObject, false);
                     StartCoroutine(MoveToad(new Vector3(1,0,0)));
                     return true;
                 }
