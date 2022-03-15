@@ -13,5 +13,4 @@ public enum BatracienType
 public class Batracien
 {
     public BatracienType batracien;
-    //public GameObject batracienPrefab;
 }

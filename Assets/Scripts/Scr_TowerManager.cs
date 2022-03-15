@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class Scr_TowerManager : MonoBehaviour
 {
-    private List<GameObject> batraciensInTower;
+     public List<GameObject> batraciensInTower;
     
     private GameObject feedbacksManager;
     
-    private VariablesPropretys variables;
+   [SerializeField] private VariablesPropretys variables;
 
+   [HideInInspector] public float offset;
 
     #region Events
 
@@ -44,11 +45,11 @@ public class Scr_TowerManager : MonoBehaviour
     
     void Awake()
     {
-        batraciensInTower = gameObject.GetComponent<Scr_TowerCreator>().batraciensInTower;
+        //batraciensInTower = gameObject.GetComponent<Scr_TowerCreator>().batraciensInTower;
         feedbacksManager = FindObjectOfType<Scr_FeedbacksManager>().gameObject;
         _swipeDetection = FindObjectOfType<SwipeDetection>();
         _inputsManager  = FindObjectOfType<InputsManager>();
-        variables = Resources.Load("CurrentData") as VariablesPropretys;
+         variables = Resources.Load("CurrentData") as VariablesPropretys;
     }
 
     void Swipe(ActionTypes swipeType)
@@ -71,7 +72,6 @@ public class Scr_TowerManager : MonoBehaviour
         //Faire en sorte que la tour ne tombe pas desuite
         foreach (GameObject batracien in batraciensInTower)
         {
-            float offset = GetComponent<Scr_TowerCreator>().hauteurOffset;
             LeanTween.moveY(batracien, batracien.transform.position.y-batracien.GetComponent<Scr_P_Batracien>().meshHauteur - offset, variables.fallingTime).setEase(LeanTweenType.easeOutCirc);
 
             // batracien.transform.Translate(new Vector3(0,-batracien.GetComponent<Scr_P_Batracien>().meshHauteur - offset ,0));

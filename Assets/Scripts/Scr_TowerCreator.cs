@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+#if UNITY_EDITOR
 public class Scr_TowerCreator : MonoBehaviour
 {
     [Header("Batracien Prefab")]
@@ -26,6 +27,8 @@ public class Scr_TowerCreator : MonoBehaviour
 
     public void CreateTower()
     {
+         GetComponent<Scr_TowerManager>().offset = hauteurOffset;
+
         if (baseLocation != null)
         {
             baseLocation = GameObject.Find("BaseLocation").transform;
@@ -65,6 +68,9 @@ public class Scr_TowerCreator : MonoBehaviour
             //Créer le batracien
             GameObject batracienCreate = Instantiate(batracienToCreate, new Vector3(loc.x, haut, loc.z), baseLocation.rotation, baseLocation);
             batraciensInTower.Add(batracienCreate);
+            
+           gameObject.GetComponent<Scr_TowerManager>().batraciensInTower=  batraciensInTower;
+
         }
     }
 
@@ -87,3 +93,5 @@ public class Scr_TowerCreator : MonoBehaviour
     
     
 }
+
+#endif

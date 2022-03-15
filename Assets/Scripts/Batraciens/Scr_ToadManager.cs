@@ -10,10 +10,15 @@ public class Scr_ToadManager : Scr_P_Batracien,IRemoveFromTower
 
     [SerializeField]public BatracienType type = BatracienType.Toad;
 
+    private IEnumerator moveCoroutine;
+
+    private Scr_FeedbacksManager fbManager;
+
     private void OnEnable()
     {
         variables = Resources.Load("CurrentData") as VariablesPropretys;
         moveSpeed = variables.toadDeplacementSpeed;
+        fbManager = FindObjectOfType<Scr_FeedbacksManager>();
     }
 
     public bool RemoveFromTower(ActionTypes actionTypes)
@@ -25,14 +30,14 @@ public class Scr_ToadManager : Scr_P_Batracien,IRemoveFromTower
             case ActionTypes.SwipeLeft:
                 if (type == BatracienType.ToadShieldLeft || type == BatracienType.Toad)
                 {
-                    FindObjectOfType<Scr_FeedbacksManager>().ToadDefetead(gameObject,true);
+                    fbManager.ToadDefetead(gameObject,true);
                     StartCoroutine(MoveToad(new Vector3(-1, 0, 0)));
                     return true;
                 }
 
                 if (type == BatracienType.ToadShieldRight)
                 {
-                    FindObjectOfType<Scr_FeedbacksManager>().ToadBlock(gameObject,false);
+                    fbManager.ToadBlock(gameObject,false);
                 }
 
                 return false;
@@ -40,13 +45,13 @@ public class Scr_ToadManager : Scr_P_Batracien,IRemoveFromTower
             case ActionTypes.SwipeRight:
                 if (type == BatracienType.ToadShieldRight || type == BatracienType.Toad)
                 {
-                    FindObjectOfType<Scr_FeedbacksManager>().ToadDefetead(gameObject, false);
+                    fbManager.ToadDefetead(gameObject, false);
                     StartCoroutine(MoveToad(new Vector3(1,0,0)));
                     return true;
                 }
                 if (type == BatracienType.ToadShieldLeft)
                 {
-                    FindObjectOfType<Scr_FeedbacksManager>().ToadBlock(gameObject,false);
+                    fbManager.ToadBlock(gameObject,false);
                 }
                 return false;
             

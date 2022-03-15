@@ -1,16 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Scr_GrenouilleManager : Scr_P_Batracien,IRemoveFromTower
 {
+    private Scr_FeedbacksManager fbManager;
+
+    private void Awake()
+    {
+        fbManager = FindObjectOfType<Scr_FeedbacksManager>();
+    }
+
     public bool RemoveFromTower(ActionTypes actionTypes)
     {
         switch (actionTypes)
         {
             case ActionTypes.Click:
                 Debug.Log("Remove");
-                FindObjectOfType<Scr_FeedbacksManager>().FrogCollect(gameObject);
+                fbManager.FrogCollect(gameObject);
                 StartCoroutine(CheckToDestroy());
                 return true;
             case ActionTypes.SwipeLeft:
@@ -34,7 +42,7 @@ public class Scr_GrenouilleManager : Scr_P_Batracien,IRemoveFromTower
                 Destroy(gameObject);
                 RemovedFromTower();
             }
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
     }
 }

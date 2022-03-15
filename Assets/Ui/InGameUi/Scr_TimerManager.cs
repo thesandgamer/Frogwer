@@ -54,6 +54,7 @@ public class Scr_TimerManager : MonoBehaviour
 
     IEnumerator TimerIsRunning()
     {
+        /*
         while (true)
         {
             if (totalTime > 0)
@@ -68,7 +69,9 @@ public class Scr_TimerManager : MonoBehaviour
                 if (timerFinished != null) timerFinished();
             }
             yield return null;
-        }
+        }*/
+        yield return null;
+
     }
     
     private void PauseTimer()
