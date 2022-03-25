@@ -45,4 +45,17 @@ public class Scr_GrenouilleManager : Scr_P_Batracien,IRemoveFromTower
             yield return new WaitForFixedUpdate();
         }
     }
+
+    void Finish()
+    {
+        /*
+        int id = //La fonction easing + .id à la fin
+        LTDescr d = LeanTween.descr( id );
+
+        if(d!=null){ // if the tween has already finished it will return null
+            // change some parameters
+            d.setOnComplete( Fonction à appeler );
+        }
+        */
+    }
 }
