@@ -13,6 +13,7 @@ public class Scr_FeedbacksManager : MonoBehaviour
     [SerializeField] private GameObject fx_ToadCollected_Prefab;
     [Header("   Toad")] 
     [SerializeField] private GameObject fx_FrogEjected_Prefab;
+    [SerializeField] private GameObject fx_ToadBlock_Prefab;
 
     private void OnEnable()
     {
@@ -51,6 +52,15 @@ public class Scr_FeedbacksManager : MonoBehaviour
     /// <param name="direction: is left?"></param>
     public void ToadBlock(GameObject toad, bool direction)
     {
+        if (direction)
+        {
+            Instantiate(fx_ToadBlock_Prefab, toad.transform.position+ new Vector3(-0.7f,0,0),Quaternion.Euler(0,-90,90));
+        }
+        else
+        {
+            Instantiate(fx_ToadBlock_Prefab, toad.transform.position + new Vector3(0.7f,0,0),Quaternion.Euler(0,90,90));
+        }
+
         //On squach le crapau
         tweener.Squash(toad, new Vector3(0.9f, 1.1f, 1.1f), 0.1f, 0.01f);
         

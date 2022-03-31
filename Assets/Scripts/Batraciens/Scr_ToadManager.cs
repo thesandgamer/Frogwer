@@ -50,7 +50,7 @@ public class Scr_ToadManager : Scr_P_Batracien,IRemoveFromTower
                 }
                 if (type == BatracienType.ToadShieldLeft)
                 {
-                    fbManager.ToadBlock(gameObject,false);
+                    fbManager.ToadBlock(gameObject,true);
                 }
                 return false;
             

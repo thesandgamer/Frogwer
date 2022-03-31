@@ -34,8 +34,8 @@ public class Scr_Tweener_Feedbacks : MonoBehaviour
     }
     public void NotGood(GameObject objetRef,Vector3 scale,float time)
     {
-        LeanTween.scale(objetRef, scale, time).setEase(LeanTweenType.easeOutBack);
-        LeanTween.scale(objetRef, Vector3.one, time).setDelay(time).setEase(LeanTweenType.easeOutBack);
+        LeanTween.scale(objetRef, scale, time).setEase(LeanTweenType.easeInBack);
+        LeanTween.scale(objetRef, Vector3.one, time).setDelay(time).setEase(LeanTweenType.easeInBack);
 
 
     }

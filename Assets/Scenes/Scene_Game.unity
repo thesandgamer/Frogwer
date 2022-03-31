@@ -656,6 +656,8 @@ MonoBehaviour:
     type: 3}
   fx_FrogEjected_Prefab: {fileID: 63889319406039803, guid: 7c8223690c09cfe4db62a90f1587d63b,
     type: 3}
+  fx_ToadBlock_Prefab: {fileID: 6369296994904150112, guid: 08901da5f1729be499ace3f22a31a90a,
+    type: 3}
 --- !u!4 &122303311
 Transform:
   m_ObjectHideFlags: 0
