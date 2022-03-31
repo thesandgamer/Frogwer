@@ -32,6 +32,14 @@ public class Scr_Tweener_Feedbacks : MonoBehaviour
         */
 
     }
+    public void NotGood(GameObject objetRef,Vector3 scale,float time)
+    {
+        LeanTween.scale(objetRef, scale, time).setEase(LeanTweenType.easeOutBack);
+        LeanTween.scale(objetRef, Vector3.one, time).setDelay(time).setEase(LeanTweenType.easeOutBack);
+
+
+    }
+    
     
     public void SizeUpAndDispawn(GameObject objetRef,float time,float delayToStart)
     {
@@ -44,6 +52,13 @@ public class Scr_Tweener_Feedbacks : MonoBehaviour
     {
         LeanTween.scale(objetRef, scale, time).setDelay(0).setEase(strechCurve);
         LeanTween.scale(objetRef, new Vector3(1,1,1), time).setDelay(time).setEase(strechCurve);
+    }
+
+
+    public void PopUp(GameObject objetRef,Vector3 scale, float time, float delayToStart,LeanTweenType type)
+    {
+        LeanTween.scale(objetRef, scale, time).setDelay(time).setEase(type);
+
     }
 
 

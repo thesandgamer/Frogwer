@@ -72,6 +72,18 @@ public class Scr_FeedbacksManager : MonoBehaviour
         
         //Sons
     }
+    
+    public void NotGood(GameObject batracien)
+    {
+        //On squach le crapau
+        tweener.NotGood(batracien, new Vector3(1.1f, 1.1f, 1.1f), 0.1f);
+        
+        //Fait spawn FX: étincelles du coté bouclier + particules bouclier
+        
+        //Joue animation
+        
+        //Sons
+    }
 
     public void FrogCollect(GameObject frog)
     {
@@ -97,6 +109,31 @@ public class Scr_FeedbacksManager : MonoBehaviour
     public void TouchingGroundTowerFB()
     {
         
+    }
+
+    public void PopUpUi(GameObject panel)
+    {
+        panel.transform.localScale = Vector3.zero;
+        tweener.PopUp(panel,Vector3.one, 0.5f,0,LeanTweenType.easeOutBounce);
+    }
+    
+    public void DePopUpUi(GameObject panel)
+    {
+        panel.transform.localScale = Vector3.one;
+        tweener.PopUp(panel,Vector3.zero, 0.5f,0,LeanTweenType.easeOutBounce);
+    }
+    
+    
+    public void PopUpTimer(GameObject panel)
+    {
+        panel.transform.localScale = Vector3.zero;
+        tweener.PopUp(panel,Vector3.one, 0.5f,0,LeanTweenType.easeOutBack);
+    }
+    
+    public void DePopGo(GameObject panel)
+    {
+       // panel.transform.localScale = Vector3.one;
+        tweener.PopUp(panel,Vector3.zero, 0.5f,0,LeanTweenType.easeInQuad);
     }
     
     

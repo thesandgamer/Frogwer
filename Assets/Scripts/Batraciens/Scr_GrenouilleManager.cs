@@ -5,12 +5,7 @@ using UnityEngine;
 
 public class Scr_GrenouilleManager : Scr_P_Batracien,IRemoveFromTower
 {
-    private Scr_FeedbacksManager fbManager;
 
-    private void Awake()
-    {
-        fbManager = FindObjectOfType<Scr_FeedbacksManager>();
-    }
 
     public bool RemoveFromTower(ActionTypes actionTypes)
     {
@@ -22,8 +17,13 @@ public class Scr_GrenouilleManager : Scr_P_Batracien,IRemoveFromTower
                 StartCoroutine(CheckToDestroy());
                 return true;
             case ActionTypes.SwipeLeft:
+               // fbManager.NotGood(gameObject);
+                fbManager.ToadBlock(gameObject,true);
                 return false;
             case ActionTypes.SwipeRight:
+                fbManager.NotGood(gameObject);
+                fbManager.ToadBlock(gameObject,false);
+
                 return false;
             case ActionTypes.Unknow:
                 return false;

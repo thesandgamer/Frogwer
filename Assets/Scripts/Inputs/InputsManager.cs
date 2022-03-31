@@ -24,23 +24,40 @@ public class InputsManager : MonoBehaviour
 
     #endregion
 
+    
     private void Awake()
     {
         playerControls = new TouchControls();
         mainCamera = Camera.main;
     }
-
     private void OnEnable()
     {
-        playerControls.Enable();
-        TouchSimulation.Enable();
+        //playerControls.Enable();
+       // TouchSimulation.Enable();
+       Scr_TimerManager.ev_GoFinished += EnableInput;
+       Scr_EndLevelUiManager.ev_LevelFinish += DisableInput;
     }
-
     private void OnDisable()
     {
         playerControls.Disable();
         TouchSimulation.Disable();
+        Scr_TimerManager.ev_GoFinished -= EnableInput;
+        Scr_EndLevelUiManager.ev_LevelFinish -= DisableInput;
+
+
     }
+    
+    public void DisableInput()
+    {
+        playerControls.Disable();
+        TouchSimulation.Disable();
+    }
+    public void EnableInput()
+    {
+        playerControls.Enable();
+        TouchSimulation.Enable();
+    }
+    
 
     private void Start()
     {

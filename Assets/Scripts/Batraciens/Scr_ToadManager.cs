@@ -12,13 +12,11 @@ public class Scr_ToadManager : Scr_P_Batracien,IRemoveFromTower
 
     private IEnumerator moveCoroutine;
 
-    private Scr_FeedbacksManager fbManager;
 
     private void OnEnable()
     {
         variables = Resources.Load("CurrentData") as VariablesPropretys;
         moveSpeed = variables.toadDeplacementSpeed;
-        fbManager = FindObjectOfType<Scr_FeedbacksManager>();
     }
 
     public bool RemoveFromTower(ActionTypes actionTypes)
@@ -26,6 +24,7 @@ public class Scr_ToadManager : Scr_P_Batracien,IRemoveFromTower
         switch (actionTypes)
         {
             case ActionTypes.Click:
+                fbManager.NotGood(gameObject);
                 return false;
             case ActionTypes.SwipeLeft:
                 if (type == BatracienType.ToadShieldLeft || type == BatracienType.Toad)
