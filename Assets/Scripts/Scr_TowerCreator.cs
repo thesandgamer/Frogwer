@@ -6,28 +6,36 @@ using UnityEngine;
 #if UNITY_EDITOR
 public class Scr_TowerCreator : MonoBehaviour
 {
-    [Header("Batracien Prefab")]
+          [Header("Batracien Prefab")]
     [SerializeField] private GameObject frogPrefab;
     [SerializeField] private GameObject toadPrefab;
     [SerializeField] private GameObject toadShieldLeftPrefab;
     [SerializeField] private GameObject toadShieldRightPrefab;
+         [Space(10)]
     
     //Liste des batraciens à créer
+         [Header("   Tower data")]
     [SerializeField] private List<BatracienType> batraciensForConstruction;
-
+    [SerializeField] private BatracienTower towerData;
+    
     //Liste de batraciens créer
-   [HideInInspector] public List<GameObject> batraciensInTower;
-
+    [HideInInspector] public List<GameObject> batraciensInTower;
     private Batracien batracienOnGround;
-
+    [Space(10)]
+         [Header("   Tower")]
     [SerializeField] private Transform baseLocation;
 
     [SerializeField] [Range(0, 1)] public float hauteurOffset;
-
-
+    
     public void CreateTower()
     {
-         GetComponent<Scr_TowerManager>().offset = hauteurOffset;
+        
+        if (towerData)
+        {
+            batraciensForConstruction = towerData.batraciensForConstruction;
+            towerData.batraciensForConstruction = batraciensForConstruction;
+        }
+        GetComponent<Scr_TowerManager>().offset = hauteurOffset;
 
         if (baseLocation != null)
         {
@@ -88,6 +96,14 @@ public class Scr_TowerCreator : MonoBehaviour
         {
             GameObject go = baseLocation.GetChild(i).gameObject;
             DestroyImmediate(go);
+        }
+    }
+
+    public void SetLevelData()
+    {
+        if (towerData)
+        {
+            towerData.batraciensForConstruction = batraciensForConstruction;
         }
     }
     

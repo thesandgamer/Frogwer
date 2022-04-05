@@ -19,8 +19,12 @@ public class Scr_Editor_TowerGenerator : Editor
             towerManager.CleanTower();
             towerManager.CreateTower();
         }
+        GUILayout.Space(20);
 
-        if (GUILayout.Button("CreateTower"))
+        
+        GUILayout.BeginHorizontal();
+
+        if (GUILayout.Button("Spawn Tower"))
         {
             if (towerManager.batraciensInTower.Count <= 0)
             {
@@ -33,16 +37,22 @@ public class Scr_Editor_TowerGenerator : Editor
             }
         }
 
-        if (GUILayout.Button("Clean Tower"))
+        if (GUILayout.Button("Destroy Tower"))
         {
             towerManager.CleanTower();
 
         }
+        GUILayout.EndHorizontal();
+
         
+        if (GUILayout.Button("Set Level Data"))
+        {
+            towerManager.SetLevelData();
 
-
-
+        }
     }
+
+
 }
 #endif
 // Runtime code here
