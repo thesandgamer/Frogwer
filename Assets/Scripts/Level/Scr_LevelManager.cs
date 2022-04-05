@@ -1,8 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class Scr_LevelManager : MonoBehaviour
 {
-    //On récupère le data du level (liste des batraciens, décors environnant, temps du timer,WIP)
+    public static event Action ev_LevelBegin;
+    private void Awake()
+    {
+        if (ev_LevelBegin != null) ev_LevelBegin();
+    }
 }

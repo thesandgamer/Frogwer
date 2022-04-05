@@ -3,9 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEditorInternal.Profiling.Memory.Experimental;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 //Faire un affichage custom pour le temps: Minutes:Segondes (custom GUI)
 [Serializable]
