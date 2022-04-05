@@ -40,17 +40,17 @@ public class Scr_TowerManager : MonoBehaviour
     }
 
     #endregion
-    
-    
-    
-    void Awake()
+
+    private void Awake()
     {
         //batraciensInTower = gameObject.GetComponent<Scr_TowerCreator>().batraciensInTower;
         feedbacksManager = FindObjectOfType<Scr_FeedbacksManager>().gameObject;
         _swipeDetection = FindObjectOfType<SwipeDetection>();
         _inputsManager  = FindObjectOfType<InputsManager>();
-         variables = Resources.Load("CurrentData") as VariablesPropretys;
+        variables = Resources.Load("CurrentData") as VariablesPropretys;
     }
+
+
 
     void Swipe(ActionTypes swipeType)
     {

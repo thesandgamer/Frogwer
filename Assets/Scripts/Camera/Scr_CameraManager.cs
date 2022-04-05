@@ -19,7 +19,7 @@ public class Scr_CameraManager : MonoBehaviour
     [SerializeField] private float timeForPlan = 2;
     [SerializeField] private LeanTweenType easeType;
 
-    private void Awake()
+    private void Start()
     {
         finalLocation = transform.position;
         startLocation = towerManger.batraciensInTower[towerManger.batraciensInTower.Count-1].transform.position;

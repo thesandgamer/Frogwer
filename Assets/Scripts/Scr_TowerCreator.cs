@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-#if UNITY_EDITOR
 public class Scr_TowerCreator : MonoBehaviour
 {
           [Header("Batracien Prefab")]
@@ -16,7 +15,7 @@ public class Scr_TowerCreator : MonoBehaviour
     //Liste des batraciens à créer
          [Header("   Tower data")]
     [SerializeField] private List<BatracienType> batraciensForConstruction;
-    [SerializeField] private BatracienTower towerData;
+    [SerializeField] public BatracienTower towerData;
     
     //Liste de batraciens créer
     [HideInInspector] public List<GameObject> batraciensInTower;
@@ -26,7 +25,14 @@ public class Scr_TowerCreator : MonoBehaviour
     [SerializeField] private Transform baseLocation;
 
     [SerializeField] [Range(0, 1)] public float hauteurOffset;
+
     
+    private void Start()
+    {
+        CleanTower();
+        CreateTower();
+    }
+
     public void CreateTower()
     {
         
@@ -110,4 +116,5 @@ public class Scr_TowerCreator : MonoBehaviour
     
 }
 
+#if UNITY_EDITOR
 #endif
