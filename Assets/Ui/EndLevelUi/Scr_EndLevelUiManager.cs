@@ -20,9 +20,11 @@ public class Scr_EndLevelUiManager : MonoBehaviour
         Scr_TowerManager.towerCleared -= LevelSuccess;
         Scr_TimerManager.timerFinished -= LevelFailed;
     }
-
+    [Header("UI")]
     [SerializeField] private GameObject Ui_EndLevel;
     private Scr_FeedbacksManager fb;
+
+    [SerializeField] private TMP_Text levelNumberText;
 
     
     [Header("Timer")]
@@ -31,7 +33,7 @@ public class Scr_EndLevelUiManager : MonoBehaviour
 
     private Scr_TimerManager _timerManager;
 
-
+    
     private void Awake()
     {
         fb = FindObjectOfType<Scr_FeedbacksManager>();
@@ -62,6 +64,8 @@ public class Scr_EndLevelUiManager : MonoBehaviour
         
         minText.text = minutes.ToString("00");
         secText.text = secondes.ToString("00");
+
+        levelNumberText.text = FindObjectOfType<Scr_GameManager>().actualLevel.ToString();
         
         
         Ui_EndLevel.SetActive(true);
@@ -72,7 +76,13 @@ public class Scr_EndLevelUiManager : MonoBehaviour
 
     public void RestartLevel()
     {
-        print("Scene " + SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        FindObjectOfType<Scr_GameManager>().actualLevel--;
+
+    }
+    
+    public void NextLevel()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

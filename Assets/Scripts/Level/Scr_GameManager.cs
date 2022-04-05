@@ -9,7 +9,7 @@ public class Scr_GameManager : MonoBehaviour
     [SerializeField] private List<BatracienTower> levels;
     [SerializeField] private Scr_TowerCreator towerCreator;
 
-    [SerializeField]private int actualLevel = 0;
+    [SerializeField]public int actualLevel = 0;
 
     public static Scr_GameManager Instance;
 
