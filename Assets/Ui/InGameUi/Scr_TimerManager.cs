@@ -6,7 +6,7 @@ using TMPro;
 
 //Faire un affichage custom pour le temps: Minutes:Segondes (custom GUI)
 [Serializable]
-struct TimeFormat
+public struct TimeFormat
 {
    [SerializeField] public float min;
    [SerializeField] [Range(0, 59)]public float seg;
@@ -23,7 +23,7 @@ public class Scr_TimerManager : MonoBehaviour
     [SerializeField] private TMP_Text minText;
     [SerializeField] private TMP_Text secText;
 
-    [SerializeField] private TimeFormat startTime;
+    public TimeFormat startTime;
     
     [Header("Timer")]
     [SerializeField] private GameObject panelGo;
@@ -46,7 +46,7 @@ public class Scr_TimerManager : MonoBehaviour
     private Scr_FeedbacksManager fb;
 
 
-    private void OnEnable()
+    private void Start()
     {
         Scr_TowerManager.towerCleared += PauseTimer;
         Scr_CameraManager.cameraIntroFinished += ThreeTwoOneGo;
@@ -60,12 +60,6 @@ public class Scr_TimerManager : MonoBehaviour
         levelTime = totalTime;
         panelTimer.SetActive(false);
         panelGo.SetActive(false);
-
-            
-
-        
-
-
     }    
     private void OnDisable()
     {

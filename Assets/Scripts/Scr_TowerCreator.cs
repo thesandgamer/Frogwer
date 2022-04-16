@@ -39,7 +39,7 @@ public class Scr_TowerCreator : MonoBehaviour
         if (towerData)
         {
             batraciensForConstruction = towerData.batraciensForConstruction;
-            towerData.batraciensForConstruction = batraciensForConstruction;
+          //  towerData.batraciensForConstruction = batraciensForConstruction;
         }
         GetComponent<Scr_TowerManager>().offset = hauteurOffset;
 

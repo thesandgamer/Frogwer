@@ -8,4 +8,6 @@ using UnityEngine;
 public class BatracienTower : ScriptableObject
 {
     public List<BatracienType> batraciensForConstruction;
+    public TimeFormat time;
+
 }
