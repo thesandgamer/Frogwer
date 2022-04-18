@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: Level_0
   m_EditorClassIdentifier: 
   batraciensForConstruction: 000000000100000000000000010000000200000003000000
+  time:
+    min: 0
+    seg: 20
