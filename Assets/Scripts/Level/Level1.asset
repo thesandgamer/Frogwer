@@ -15,4 +15,4 @@ MonoBehaviour:
   batraciensForConstruction: 00000000010000000100000001000000010000000000000002000000
   time:
     min: 1
-    seg: 15
+    seg: 5
