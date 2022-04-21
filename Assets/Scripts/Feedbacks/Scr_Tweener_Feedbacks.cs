@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class Scr_Tweener_Feedbacks : MonoBehaviour
@@ -61,5 +62,23 @@ public class Scr_Tweener_Feedbacks : MonoBehaviour
 
     }
 
+    public void UiSizeUpAndDown(GameObject objetRef,Vector3 scale,float time,LeanTweenType easeType)
+    {
+        LeanTween.scale(objetRef, scale, time).setEase(easeType).setLoopPingPong();
+        LeanTween.scale(objetRef, Vector3.one, time).setDelay(time).setEase(easeType).setLoopPingPong();
+    }
+    
+    public void UiRotateLeftRight(GameObject objetRef,Vector3 rotation,float time,LeanTweenType easeType)
+    {
+        LeanTween.rotate(objetRef, rotation, time).setEase(easeType).setLoopPingPong();
+        LeanTween.rotate(objetRef, -rotation, time).setDelay(time).setEase(easeType).setLoopPingPong();
+    }
+
+    public void UiChangeColor(GameObject objetRef,Color colorTo, float time,LeanTweenType easeType)
+    {
+        LeanTween.colorTextTMP(objetRef.GetComponent<RectTransform>(), colorTo, time).setEase(easeType).setLoopPingPong();
+
+    }
+    
 
 }

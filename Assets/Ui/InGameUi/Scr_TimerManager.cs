@@ -48,7 +48,7 @@ public class Scr_TimerManager : MonoBehaviour
 
     private void Start()
     {
-        Scr_TowerManager.towerCleared += PauseTimer;
+        Scr_TowerManager.towerCleared += TowerFinish;
         Scr_CameraManager.cameraIntroFinished += ThreeTwoOneGo;
 
         fb = FindObjectOfType<Scr_FeedbacksManager>();
@@ -63,7 +63,7 @@ public class Scr_TimerManager : MonoBehaviour
     }    
     private void OnDisable()
     {
-        Scr_TowerManager.towerCleared -= PauseTimer;
+        Scr_TowerManager.towerCleared -= TowerFinish;
         Scr_CameraManager.cameraIntroFinished -= ThreeTwoOneGo;
 
     }
@@ -86,12 +86,17 @@ public class Scr_TimerManager : MonoBehaviour
         enabled = true;
     }
 
-
+    bool reachNearEnd = false;
     IEnumerator TimerIsRunning()
     {
         //Peut être éviter de faire ça
         while (true)
         {
+            if (!reachNearEnd&& totalTime <= 4)
+            {
+                reachNearEnd = true;
+                TimerNearEnd();
+            }
             if (totalTime > 0)
             {
                 DisplayTimer();
@@ -100,19 +105,31 @@ public class Scr_TimerManager : MonoBehaviour
             else
             {
                 totalTime = 0;
-                PauseTimer();
+                EndOfTimer();
                 if (timerFinished != null) timerFinished();
             }
+           
+            
             yield return null;
         }
         yield return null;
 
     }
     
-    private void PauseTimer()
+    private void EndOfTimer()
     {
         StopCoroutine(coroutine);
         print("Stopped timer at " + Time.time);
+        Destroy(panelTimer);
+        //Rajouter un FX du timer qui disparait
+    }
+
+    private void TowerFinish()
+    {
+        StopCoroutine(coroutine);
+        print("Stopped timer at " + Time.time);
+        Destroy(panelTimer);
+        //Rajouter un fx de timer réussite
     }
 
 
@@ -159,9 +176,10 @@ public class Scr_TimerManager : MonoBehaviour
 */
         yield return new WaitForSeconds(0.8f);
         goText.text = "Go";
-        if (ev_GoFinished != null) ev_GoFinished();
-
+        
         fb.PopUpTimer(panelGo); //Remplacer par un PopUpGo
+        if (ev_GoFinished != null) ev_GoFinished(); //Réactive notamment les inputs
+
         yield return new WaitForSeconds(1f);
         fb.DePopGo(panelGo);
         
@@ -176,5 +194,14 @@ public class Scr_TimerManager : MonoBehaviour
 
 
     }
+
+    void TimerNearEnd()
+    {
+        fb.TimerNearEndFb(panelTimer);
+        print("Timer near end");
+        //Le timer va size up and down avec un peut de tremblement(peut être légère rotation)
+        //Il va aussi aléterner entre rouge et couleur de base
+    }
+    
     
 }

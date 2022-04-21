@@ -1,5 +1,6 @@
 //namespace DentedPixel{
 using System;
+using TMPro;
 using UnityEngine;
 
 /**
@@ -83,6 +84,7 @@ public class LTDescr
 	#if !UNITY_3_5 && !UNITY_4_0 && !UNITY_4_0_1 && !UNITY_4_1 && !UNITY_4_2 && !UNITY_4_3 && !UNITY_4_5
 	public RectTransform rectTransform;
 	public UnityEngine.UI.Text uiText;
+	public TMP_Text tmpUiText;
 	public UnityEngine.UI.Image uiImage;
 	public UnityEngine.UI.RawImage rawImage;
 	public UnityEngine.Sprite[] sprites;
@@ -591,6 +593,26 @@ public class LTDescr
 			val = newVect.x;
 			Color toColor = tweenColor(this, val);
 			this.uiText.color = toColor;
+			if (dt!=0f && this._optional.onUpdateColor != null)
+				this._optional.onUpdateColor(toColor);
+
+			if(this.useRecursion && trans.childCount>0)
+				textColorRecursive(this.trans, toColor);
+		};
+		return this;
+	}
+	
+	public LTDescr setTextTMPColor(){
+		this.type = TweenAction.TEXT_COLOR;
+		this.initInternal = ()=>{
+			this.tmpUiText = trans.GetComponent<TMP_Text>();
+			this.setFromColor( this.tmpUiText != null ? this.tmpUiText.color : Color.white );
+		};
+		this.easeInternal = ()=>{
+			newVect = easeMethod();
+			val = newVect.x;
+			Color toColor = tweenColor(this, val);
+			this.tmpUiText.color = toColor;
 			if (dt!=0f && this._optional.onUpdateColor != null)
 				this._optional.onUpdateColor(toColor);
 
