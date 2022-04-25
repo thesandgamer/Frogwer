@@ -1,16 +1,23 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+
+[Serializable]
+struct Dialogue
+{
+    public string texte;
+}
 
 public class Scr_DialogueDisplay : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI textDisplay;
-    [SerializeField] private string[] sentences;
+    [SerializeField] private Dialogue[] dialogues;
+
     private int index;
 
     [SerializeField] private float typingSpeed;
+    
 
     private void Start()
     {
@@ -20,7 +27,7 @@ public class Scr_DialogueDisplay : MonoBehaviour
 
     IEnumerator TypeText()
     {
-        foreach (char letter in sentences[index].ToCharArray())
+        foreach (char letter in dialogues[index].texte.ToCharArray())
         {
             textDisplay.text += letter;
             yield return new WaitForSeconds(typingSpeed);
@@ -29,7 +36,9 @@ public class Scr_DialogueDisplay : MonoBehaviour
 
     public void NextSentence()
     {
-        if (index < sentences.Length - 1)
+        print("Next Phrase");
+
+        if (index < dialogues.Length - 1)
         {
             index++;
             textDisplay.text = "";
