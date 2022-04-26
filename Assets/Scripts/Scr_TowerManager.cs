@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Scr_TowerManager : MonoBehaviour
 {
-     public List<GameObject> batraciensInTower;
+    public List<GameObject> batraciensInTower;
     
     private GameObject feedbacksManager;
     
@@ -50,17 +50,17 @@ public class Scr_TowerManager : MonoBehaviour
         variables = Resources.Load("CurrentData") as VariablesPropretys;
     }
 
-
-
     void Swipe(ActionTypes swipeType)
     {
         bool batracienRemoved = batraciensInTower[0].GetComponent<IRemoveFromTower>().RemoveFromTower(swipeType);
         
         if (batracienRemoved)
         {
-            batraciensInTower.RemoveAt(0);
+            if (batraciensInTower.Count > 0)
+            {
+                batraciensInTower.RemoveAt(0);
+            }
         }
-
         if (batraciensInTower.Count == 0)
         {
             if (towerCleared != null) towerCleared();
@@ -73,8 +73,6 @@ public class Scr_TowerManager : MonoBehaviour
         foreach (GameObject batracien in batraciensInTower)
         {
             LeanTween.moveY(batracien, batracien.transform.position.y-batracien.GetComponent<Scr_P_Batracien>().meshHauteur - offset, variables.fallingTime).setEase(LeanTweenType.easeOutCirc);
-
-            // batracien.transform.Translate(new Vector3(0,-batracien.GetComponent<Scr_P_Batracien>().meshHauteur - offset ,0));
         }
 
         

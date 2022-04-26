@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class Scr_GameManager : MonoBehaviour
 {
@@ -16,6 +18,10 @@ public class Scr_GameManager : MonoBehaviour
     [SerializeField]public int actualLevel = 0;
 
     public static Scr_GameManager Instance;
+
+    [SerializeField] public Animator transition;
+    private float transitionTime = 1f;
+
 
 
     private void OnEnable()
@@ -37,6 +43,7 @@ public class Scr_GameManager : MonoBehaviour
 
     public void SwitchLevel()
     {
+
         if (testingMode)
         {
             towerCreator = FindObjectOfType<Scr_TowerCreator>();
@@ -62,6 +69,26 @@ public class Scr_GameManager : MonoBehaviour
         }
 
     }
+
+    public void NextLevel(int levelIndex)
+    {
+        transition.SetTrigger("Start");
+        StartCoroutine(LoadLevel((levelIndex)));
+    }
+    
+    
+        
+    IEnumerator LoadLevel(int levelIndex)
+    {
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionTime);
+
+        SceneManager.LoadScene(levelIndex);
+
+
+    }
+
 
     private void OnDisable()
     {

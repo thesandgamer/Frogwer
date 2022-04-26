@@ -65,8 +65,14 @@ public class Scr_EndLevelUiManager : MonoBehaviour
         minText.text = minutes.ToString("00");
         secText.text = secondes.ToString("00");
 
-        levelNumberText.text = FindObjectOfType<Scr_GameManager>().actualLevel.ToString();
-        
+        if (FindObjectOfType<Scr_GameManager>())
+        {
+            levelNumberText.text = FindObjectOfType<Scr_GameManager>().actualLevel.ToString();
+        }
+        else
+        {
+            levelNumberText.text = "Tutorial";
+        }
         
         Ui_EndLevel.SetActive(true);
         fb.PopUpUi(Ui_EndLevel);
@@ -76,14 +82,33 @@ public class Scr_EndLevelUiManager : MonoBehaviour
 
     public void RestartLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        FindObjectOfType<Scr_GameManager>().actualLevel--;
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //FindObjectOfType<Scr_GameManager>().actualLevel--;
+        if (FindObjectOfType<Scr_GameManager>())
+        {
+            Scr_GameManager.Instance.NextLevel(SceneManager.GetActiveScene().buildIndex);
+            Scr_GameManager.Instance.actualLevel--;
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
 
     }
     
     public void NextLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (FindObjectOfType<Scr_GameManager>())
+        {
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            Scr_GameManager.Instance.NextLevel(SceneManager.GetActiveScene().buildIndex);
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        }
+
     }
 
 

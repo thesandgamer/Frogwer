@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using UnityEngine.Events;
 using UnityEngine;
 using TMPro;
 
@@ -7,6 +8,7 @@ using TMPro;
 struct Dialogue
 {
     public string texte;
+    public UnityEvent toTrigger;
 }
 
 public class Scr_DialogueDisplay : MonoBehaviour
@@ -17,12 +19,16 @@ public class Scr_DialogueDisplay : MonoBehaviour
     private int index;
 
     [SerializeField] private float typingSpeed;
+
+    private IEnumerator typeTextCouroutine;
     
 
     private void Start()
     {
         textDisplay.text = "";
-        StartCoroutine(TypeText());
+        typeTextCouroutine = TypeText();
+
+        StartCoroutine(typeTextCouroutine);
     }
 
     IEnumerator TypeText()
@@ -36,12 +42,18 @@ public class Scr_DialogueDisplay : MonoBehaviour
 
     public void NextSentence()
     {
-        print("Next Phrase");
+        StopAllCoroutines();
 
         if (index < dialogues.Length - 1)
         {
+            print("Next Phrase");
             index++;
             textDisplay.text = "";
+            if (dialogues[index].toTrigger != null)
+            {
+                dialogues[index].toTrigger.Invoke();
+            }
+            
             StartCoroutine(TypeText());
         }
     }
