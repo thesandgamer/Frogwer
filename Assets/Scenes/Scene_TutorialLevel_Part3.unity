@@ -5683,7 +5683,7 @@ PrefabInstance:
     - target: {fileID: 823838758735916605, guid: 976058a3e198ecf49a5c5342c2e46c97,
         type: 3}
       propertyPath: dialogues.Array.data[1].texte
-      value: "Tu voit \xE7a la haut?  C'est le timer, c'est le temps que tu vas avoir
+      value: "Tu vois \xE7a la haut?  C'est le timer, c'est le temps que tu vas avoir
         pour vider la tour"
       objectReference: {fileID: 0}
     - target: {fileID: 823838758735916605, guid: 976058a3e198ecf49a5c5342c2e46c97,
