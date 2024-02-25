@@ -169,7 +169,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      WaterFall1V2_0: -6288001919169909516
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
