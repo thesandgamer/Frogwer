@@ -24,7 +24,7 @@ public class Scr_TowerCreator : MonoBehaviour
          [Header("   Tower")]
     [SerializeField] private Transform baseLocation;
 
-    [SerializeField] [Range(0, 1)] public float hauteurOffset;
+    [SerializeField] [Range(-1, 1)] public float hauteurOffset;
 
     
     private void Start()
@@ -73,14 +73,20 @@ public class Scr_TowerCreator : MonoBehaviour
                     break;
                 
             }
-            
+
+            float haut = 10 + hauteurOffset * i;
             //Hauteur où créer
-            float haut = (loc.y ) //Loaction de base
-                         + (batracienToCreate.GetComponent<MeshFilter>().sharedMesh.bounds.size.y * i) //Hauteur du mesh
-                                                 + (hauteurOffset * i) ;//Offset
+            if (batracienToCreate.GetComponentInChildren<SpriteRenderer>())
+            {
+                haut= (loc.y ) //Loaction de base
+                      + (batracienToCreate.GetComponentInChildren<SpriteRenderer>().bounds.size.y * i) //Hauteur du mesh
+                      + (hauteurOffset * i) ;//Offset
+            }
+   
 
             //Créer le batracien
             GameObject batracienCreate = Instantiate(batracienToCreate, new Vector3(loc.x, haut, loc.z), baseLocation.rotation, baseLocation);
+            batracienCreate.GetComponentInChildren<SpriteRenderer>().sortingOrder -= i;
             batraciensInTower.Add(batracienCreate);
             
            gameObject.GetComponent<Scr_TowerManager>().batraciensInTower=  batraciensInTower;

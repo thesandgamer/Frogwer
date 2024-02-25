@@ -13,16 +13,16 @@ public class Scr_GrenouilleManager : Scr_P_Batracien,IRemoveFromTower
         {
             case ActionTypes.Click:
                 Debug.Log("Remove");
-                fbManager.FrogCollect(gameObject);
-                StartCoroutine(CheckToDestroy());
+                FrogRemoved();
+                //StartCoroutine(CheckToDestroy());
+                RemovedFromTower();
+
                 return true;
             case ActionTypes.SwipeLeft:
-               // fbManager.NotGood(gameObject);
                 fbManager.NotGood(gameObject);
                 return false;
             case ActionTypes.SwipeRight:
                 fbManager.NotGood(gameObject);
-
                 return false;
             case ActionTypes.Unknow:
                 return false;
@@ -30,16 +30,21 @@ public class Scr_GrenouilleManager : Scr_P_Batracien,IRemoveFromTower
 
         return false;
     }
-
+    
+    public void FrogRemoved()
+    {
+        fbManager.FrogCollect(gameObject);
+    }
+    
     //Pas très propre, trouver un moyen d'amléiorer (event quand le tweening à finit?)
     IEnumerator CheckToDestroy()
     {
+        
         for (;;)
         {
             if (transform.localScale == Vector3.zero)
             {
                 Destroy(gameObject);
-                RemovedFromTower();
             }
             yield return new WaitForFixedUpdate();
         }

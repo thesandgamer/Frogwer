@@ -18,7 +18,6 @@ public class Scr_FeedbacksManager : MonoBehaviour
     private void OnEnable()
     {
         variables = Resources.Load("CurrentData") as VariablesPropretys;
-
     }
 
     private void Awake()

@@ -45,7 +45,7 @@ public class Scr_Tweener_Feedbacks : MonoBehaviour
     public void SizeUpAndDispawn(GameObject objetRef,float time,float delayToStart)
     {
        //LeanTween.scale(objetRef, Vector3.zero, time).setDelay(delayToStart).setEase(sizeUpAndZeroCurve);
-        LeanTween.scale(objetRef, Vector3.zero, time).setDelay(delayToStart).setEase(LeanTweenType.easeInBack);
+        LeanTween.scale(objetRef, Vector3.zero, time).setDelay(delayToStart).setEase(LeanTweenType.easeInBack).setOnComplete(() => {Destroy(objetRef);});
 
     }
 
@@ -77,7 +77,6 @@ public class Scr_Tweener_Feedbacks : MonoBehaviour
     public void UiChangeColor(GameObject objetRef,Color colorTo, float time,LeanTweenType easeType)
     {
         LeanTween.colorTextTMP(objetRef.GetComponent<RectTransform>(), colorTo, time).setEase(easeType).setLoopPingPong();
-
     }
     
 

@@ -62,7 +62,7 @@ public class Scr_ToadManager : Scr_P_Batracien,IRemoveFromTower
     
     IEnumerator MoveToad(Vector3 direction)
     {
-        StartCoroutine(WaitToTowerFall());
+        Invoke("RemovedFromTower",0.2f);
         float startTime = Time.time;
         while (Time.time < startTime + 2)
         {

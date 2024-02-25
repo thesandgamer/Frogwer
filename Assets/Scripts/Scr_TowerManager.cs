@@ -13,6 +13,9 @@ public class Scr_TowerManager : MonoBehaviour
 
    [HideInInspector] public float offset;
 
+   [SerializeField] private float timeToFall = .2f;
+
+
     #region Events
 
     public static event Action towerCleared;
@@ -21,20 +24,20 @@ public class Scr_TowerManager : MonoBehaviour
     private InputsManager _inputsManager;
     private void OnEnable()
     {
-        _swipeDetection.Swipping += Swipe;
-        _inputsManager.OnTapTouch += Swipe;
+        _swipeDetection.Swipping += BatracienRemoved;
+        _inputsManager.OnTapTouch += BatracienRemoved;
 
-        Scr_P_Batracien.OnRemoveFromTower += FallingTower;
+       // Scr_P_Batracien.OnRemoveFromTower += FallingTower;
         
         
     }
 
     private void OnDisable()
     {
-        _swipeDetection.Swipping -= Swipe;
-        _inputsManager.OnTapTouch -= Swipe;
+        _swipeDetection.Swipping -= BatracienRemoved;
+        _inputsManager.OnTapTouch -= BatracienRemoved;
         
-        Scr_P_Batracien.OnRemoveFromTower -= FallingTower;
+        //Scr_P_Batracien.OnRemoveFromTower -= FallingTower;
 
 
     }
@@ -50,15 +53,17 @@ public class Scr_TowerManager : MonoBehaviour
         variables = Resources.Load("CurrentData") as VariablesPropretys;
     }
 
-    void Swipe(ActionTypes swipeType)
+    void BatracienRemoved(ActionTypes swipeType)
     {
         bool batracienRemoved = batraciensInTower[0].GetComponent<IRemoveFromTower>().RemoveFromTower(swipeType);
-        
+
         if (batracienRemoved)
         {
             if (batraciensInTower.Count > 0)
             {
+                batraciensInTower[0].transform.parent = null;
                 batraciensInTower.RemoveAt(0);
+                Invoke("FallingTower",timeToFall);
             }
         }
         if (batraciensInTower.Count == 0)
@@ -66,7 +71,8 @@ public class Scr_TowerManager : MonoBehaviour
             if (towerCleared != null) towerCleared();
         }
     }
-        
+
+
     void FallingTower()
     {
         //Faire en sorte que la tour ne tombe pas desuite

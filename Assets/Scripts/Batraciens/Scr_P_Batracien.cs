@@ -18,7 +18,7 @@ public class Scr_P_Batracien : MonoBehaviour
     public static event RemoveFromTower OnRemoveFromTower;
     private void Start()
     {
-        meshHauteur = GetComponent<MeshFilter>().sharedMesh.bounds.size.y;
+        meshHauteur = GetComponentInChildren<SpriteRenderer>().bounds.size.y;
     }
 
 
