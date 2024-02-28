@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class Scr_GrenouilleManager : Scr_P_Batracien,IRemoveFromTower
 {
-
+    [SerializeField]private SpriteRenderer renderer;
+    [SerializeField]private Sprite freeSprite;
 
     public bool RemoveFromTower(ActionTypes actionTypes)
     {
@@ -33,6 +34,7 @@ public class Scr_GrenouilleManager : Scr_P_Batracien,IRemoveFromTower
     
     public void FrogRemoved()
     {
+        renderer.sprite = freeSprite;
         fbManager.FrogCollect(gameObject);
     }
     

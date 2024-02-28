@@ -14,7 +14,7 @@ public class Scr_MainMenuManager : MonoBehaviour
     {
         FindObjectOfType<Scr_FeedbacksManager>().GetComponent<Scr_FeedbacksManager>().DePopUpUi(button);
         transition.SetTrigger("Start");
-        //SceneManager.LoadScene(level);
+        SceneManager.LoadScene(level);
     }
     
 }

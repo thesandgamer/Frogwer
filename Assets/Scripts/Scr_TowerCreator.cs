@@ -52,7 +52,7 @@ public class Scr_TowerCreator : MonoBehaviour
         
         Debug.Log("Position " + loc);
 
-        
+        float oldHaut = loc.y;
         for (int i = 0; i < batraciensForConstruction.Count; i++)
         {
             //Décide de quel batracien on va créer
@@ -74,13 +74,21 @@ public class Scr_TowerCreator : MonoBehaviour
                 
             }
 
-            float haut = 10 + hauteurOffset * i;
-            //Hauteur où créer
+            float spriteSize = 0;
+
+            float haut = (oldHaut ) + (spriteSize) ; //Set une hauteur de base pour le premier
+            //Calcul de la hauteur en fonction du batracien à rajouter
             if (batracienToCreate.GetComponentInChildren<SpriteRenderer>())
             {
-                haut= (loc.y ) //Loaction de base
-                      + (batracienToCreate.GetComponentInChildren<SpriteRenderer>().bounds.size.y * i) //Hauteur du mesh
-                      + (hauteurOffset * i) ;//Offset
+                if (i > 0)
+                {
+                    spriteSize = batraciensInTower[i-1].GetComponentInChildren<SpriteRenderer>().bounds.size.y;
+                    haut = (oldHaut ) //Loaction de base
+                           + (spriteSize) //Hauteur du sprite
+                           + (hauteurOffset ) ;//Offset
+                    oldHaut = haut;
+                }
+                   
             }
    
 
@@ -89,7 +97,7 @@ public class Scr_TowerCreator : MonoBehaviour
             batracienCreate.GetComponentInChildren<SpriteRenderer>().sortingOrder -= i;
             batraciensInTower.Add(batracienCreate);
             
-           gameObject.GetComponent<Scr_TowerManager>().batraciensInTower=  batraciensInTower;
+           gameObject.GetComponent<Scr_TowerManager>().batraciensInTower = batraciensInTower;
 
         }
     }

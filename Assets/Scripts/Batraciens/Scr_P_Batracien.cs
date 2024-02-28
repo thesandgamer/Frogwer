@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Scr_P_Batracien : MonoBehaviour
 {
-    [HideInInspector]public float meshHauteur { get; set; }
+    [HideInInspector]public float imageHeight { get; set; }
     
     protected Scr_FeedbacksManager fbManager;
 
@@ -18,7 +18,7 @@ public class Scr_P_Batracien : MonoBehaviour
     public static event RemoveFromTower OnRemoveFromTower;
     private void Start()
     {
-        meshHauteur = GetComponentInChildren<SpriteRenderer>().bounds.size.y;
+        imageHeight = GetComponentInChildren<SpriteRenderer>().bounds.size.y;
     }
 
 

@@ -53,6 +53,8 @@ public class Scr_TowerManager : MonoBehaviour
         variables = Resources.Load("CurrentData") as VariablesPropretys;
     }
 
+    float posGoTo = 0;
+
     void BatracienRemoved(ActionTypes swipeType)
     {
         bool batracienRemoved = batraciensInTower[0].GetComponent<IRemoveFromTower>().RemoveFromTower(swipeType);
@@ -61,6 +63,7 @@ public class Scr_TowerManager : MonoBehaviour
         {
             if (batraciensInTower.Count > 0)
             {
+                posGoTo = batraciensInTower[0].transform.position.y;
                 batraciensInTower[0].transform.parent = null;
                 batraciensInTower.RemoveAt(0);
                 Invoke("FallingTower",timeToFall);
@@ -75,11 +78,22 @@ public class Scr_TowerManager : MonoBehaviour
 
     void FallingTower()
     {
-        //Faire en sorte que la tour ne tombe pas desuite
+        for (int i = 0; i < batraciensInTower.Count; i++)
+        {
+            if (i > 0)
+            {
+                posGoTo += batraciensInTower[i - 1].GetComponent<Scr_P_Batracien>().imageHeight + offset;
+                //posGoTo = batraciensInTower[i-1].transform.position.y + batraciensInTower[i-1].GetComponent<Scr_P_Batracien>().imageHeight + offset;
+            }
+            
+            LeanTween.moveY(batraciensInTower[i], posGoTo, variables.fallingTime).setEase(LeanTweenType.easeOutCirc);
+        }
+        /*
+        //Pour chaque élément de la tour, l'élément va se déplacer à une position en dessous
         foreach (GameObject batracien in batraciensInTower)
         {
-            LeanTween.moveY(batracien, batracien.transform.position.y-batracien.GetComponent<Scr_P_Batracien>().meshHauteur - offset, variables.fallingTime).setEase(LeanTweenType.easeOutCirc);
-        }
+            LeanTween.moveY(batracien, batracien.transform.position.y-batracien.GetComponent<Scr_P_Batracien>().imageHeight - offset, variables.fallingTime).setEase(LeanTweenType.easeOutCirc);
+        }*/
 
         
     }

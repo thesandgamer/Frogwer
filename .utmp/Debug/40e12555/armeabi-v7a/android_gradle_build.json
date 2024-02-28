@@ -1,0 +1,39 @@
+{
+  "buildFiles": [
+    "H:\\Creation_VideoGame\\GameProjects\\Unity_Frogwer\\Frogwer\\Library\\Bee\\Android\\Prj\\IL2CPP\\Gradle\\unityLibrary\\src\\main\\cpp\\CMakeLists.txt",
+    "H:\\Creation_VideoGame\\GameProjects\\Unity_Frogwer\\Frogwer\\Library\\Bee\\Android\\Prj\\IL2CPP\\Gradle\\unityLibrary\\src\\main\\cpp\\FramePacing\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "H:\\Apps\\JV\\Engines\\Unity\\Editors\\2023.2.11f1\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\SDK\\cmake\\3.22.1\\bin\\ninja.exe",
+      "-C",
+      "H:\\Creation_VideoGame\\GameProjects\\Unity_Frogwer\\Frogwer\\.utmp\\Debug\\40e12555\\armeabi-v7a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "H:\\Apps\\JV\\Engines\\Unity\\Editors\\2023.2.11f1\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\SDK\\cmake\\3.22.1\\bin\\ninja.exe",
+    "-C",
+    "H:\\Creation_VideoGame\\GameProjects\\Unity_Frogwer\\Frogwer\\.utmp\\Debug\\40e12555\\armeabi-v7a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "swappywrapper::@7e25bd1f32ce224db4e9": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "swappywrapper",
+      "output": "H:\\Creation_VideoGame\\GameProjects\\Unity_Frogwer\\Frogwer\\Library\\Bee\\Android\\Prj\\IL2CPP\\Gradle\\unityLibrary\\build\\intermediates\\cxx\\Debug\\40e12555\\obj\\armeabi-v7a\\libswappywrapper.so",
+      "runtimeFiles": []
+    }
+  },
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "H:\\Apps\\JV\\Engines\\Unity\\Editors\\2023.2.11f1\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\NDK\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe",
+      "cppCompilerExecutable": "H:\\Apps\\JV\\Engines\\Unity\\Editors\\2023.2.11f1\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\NDK\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}

@@ -49,20 +49,32 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2856426133668471023, guid: e4bd10a7153186041bafedb36f167652, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1396997992761194351, guid: 3eb4571ea0697cd4886c279d29030bb9, type: 3}
+    - target: {fileID: 2856426133668471023, guid: e4bd10a7153186041bafedb36f167652, type: 3}
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2856426133668471023, guid: e4bd10a7153186041bafedb36f167652, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.509434
       objectReference: {fileID: 0}
     - target: {fileID: 2856426133668471023, guid: e4bd10a7153186041bafedb36f167652, type: 3}
       propertyPath: m_Color.r
-      value: 0.34229445
+      value: 0.1738069
+      objectReference: {fileID: 0}
+    - target: {fileID: 3578866631875515478, guid: e4bd10a7153186041bafedb36f167652, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6748648576887442028, guid: e4bd10a7153186041bafedb36f167652, type: 3}
       propertyPath: m_Name
       value: P_Frog
+      objectReference: {fileID: 0}
+    - target: {fileID: 8378138184526698883, guid: e4bd10a7153186041bafedb36f167652, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -89,3 +101,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9373535a374131047b03d0abf6339773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  renderer: {fileID: 8720291162170334959}
+  freeSprite: {fileID: 5482969179299647783, guid: 3eb4571ea0697cd4886c279d29030bb9, type: 3}
+--- !u!212 &8720291162170334959 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2856426133668471023, guid: e4bd10a7153186041bafedb36f167652, type: 3}
+  m_PrefabInstance: {fileID: 6818629002066378240}
+  m_PrefabAsset: {fileID: 0}
