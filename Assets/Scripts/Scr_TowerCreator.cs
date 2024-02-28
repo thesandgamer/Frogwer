@@ -94,7 +94,8 @@ public class Scr_TowerCreator : MonoBehaviour
 
             //Créer le batracien
             GameObject batracienCreate = Instantiate(batracienToCreate, new Vector3(loc.x, haut, loc.z), baseLocation.rotation, baseLocation);
-            batracienCreate.GetComponentInChildren<SpriteRenderer>().sortingOrder -= i;
+           // batracienCreate.GetComponentsInChildren<SpriteRenderer>()[0].sortingOrder -= i;
+            batracienCreate.GetComponentsInChildren<SpriteRenderer>()[1].sortingOrder -= i;
             batraciensInTower.Add(batracienCreate);
             
            gameObject.GetComponent<Scr_TowerManager>().batraciensInTower = batraciensInTower;

@@ -48,10 +48,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2688755796881100509, guid: e4bd10a7153186041bafedb36f167652, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3622669222776117804, guid: ffa3a599b047e494facce30aa662e1d9, type: 3}
+    - target: {fileID: 2688755796881100509, guid: e4bd10a7153186041bafedb36f167652, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2688755796881100509, guid: e4bd10a7153186041bafedb36f167652, type: 3}
+      propertyPath: m_Color.g
+      value: 0.50980395
+      objectReference: {fileID: 0}
+    - target: {fileID: 2688755796881100509, guid: e4bd10a7153186041bafedb36f167652, type: 3}
+      propertyPath: m_Color.r
+      value: 0.17254902
+      objectReference: {fileID: 0}
     - target: {fileID: 2856426133668471023, guid: e4bd10a7153186041bafedb36f167652, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1396997992761194351, guid: 3eb4571ea0697cd4886c279d29030bb9, type: 3}
+      objectReference: {fileID: -7170509197336209630, guid: c09c7084aff3ce74599dbd03eb39fb7f, type: 3}
     - target: {fileID: 2856426133668471023, guid: e4bd10a7153186041bafedb36f167652, type: 3}
       propertyPath: m_Color.b
       value: 0
@@ -102,9 +118,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   renderer: {fileID: 8720291162170334959}
-  freeSprite: {fileID: 5482969179299647783, guid: 3eb4571ea0697cd4886c279d29030bb9, type: 3}
+  rendererLeg: {fileID: 8930853383683272925}
+  freeSprite: {fileID: -1618549876953079792, guid: c09c7084aff3ce74599dbd03eb39fb7f, type: 3}
+  freeSpriteLeg: {fileID: 672087539460935945, guid: ffa3a599b047e494facce30aa662e1d9, type: 3}
 --- !u!212 &8720291162170334959 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 2856426133668471023, guid: e4bd10a7153186041bafedb36f167652, type: 3}
+  m_PrefabInstance: {fileID: 6818629002066378240}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &8930853383683272925 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2688755796881100509, guid: e4bd10a7153186041bafedb36f167652, type: 3}
   m_PrefabInstance: {fileID: 6818629002066378240}
   m_PrefabAsset: {fileID: 0}

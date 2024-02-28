@@ -15,6 +15,9 @@ public class Scr_ToadManager : Scr_P_Batracien,IRemoveFromTower
     [SerializeField]private SpriteRenderer renderer;
     [SerializeField]private Sprite freeSprite;
 
+    [SerializeField]private SpriteRenderer rendererLeg;
+    [SerializeField]private Sprite freeSpriteleg;
+
 
     private void OnEnable()
     {
@@ -33,7 +36,9 @@ public class Scr_ToadManager : Scr_P_Batracien,IRemoveFromTower
                 if (type == BatracienType.ToadShieldLeft || type == BatracienType.Toad)
                 {
                     renderer.sprite = freeSprite;
+                    rendererLeg.sprite = freeSpriteleg;
                     renderer.flipX = true;
+                    rendererLeg.flipX = true;
                     fbManager.ToadDefetead(gameObject,true);
                     StartCoroutine(MoveToad(new Vector3(-1, 0, 0)));
                     return true;
@@ -51,6 +56,8 @@ public class Scr_ToadManager : Scr_P_Batracien,IRemoveFromTower
                 if (type == BatracienType.ToadShieldRight || type == BatracienType.Toad)
                 {
                     renderer.sprite = freeSprite;
+                    rendererLeg.sprite = freeSpriteleg;
+
                     fbManager.ToadDefetead(gameObject, false);
                     StartCoroutine(MoveToad(new Vector3(1,0,0)));
                     return true;
