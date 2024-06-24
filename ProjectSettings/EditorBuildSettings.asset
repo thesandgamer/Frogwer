@@ -11,6 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scene_Level.unity
     guid: 1721cd81c02f27947a10eea6a89790db
+  - enabled: 1
+    path: Assets/Scenes/Scene_BackGround_WaterFall.unity
+    guid: 457bf261328c8c64e8080c5962f60725
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: a7eeca336784a2744a7daec54fe6dc67, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: e23be407c4397674d935fce9c1906cfd, type: 2}
+  m_UseUCBPForAssetBundles: 0

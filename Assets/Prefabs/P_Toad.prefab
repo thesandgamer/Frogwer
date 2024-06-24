@@ -51,34 +51,34 @@ PrefabInstance:
     - target: {fileID: 2688755796881100509, guid: e4bd10a7153186041bafedb36f167652, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 8097505432021548687, guid: ffa3a599b047e494facce30aa662e1d9, type: 3}
+      objectReference: {fileID: 1502601044726172428, guid: 9a622734f11b6c440b0097fcc03d5b85, type: 3}
     - target: {fileID: 2688755796881100509, guid: e4bd10a7153186041bafedb36f167652, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2688755796881100509, guid: e4bd10a7153186041bafedb36f167652, type: 3}
       propertyPath: m_Color.g
-      value: 0.2392157
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2688755796881100509, guid: e4bd10a7153186041bafedb36f167652, type: 3}
       propertyPath: m_Color.r
-      value: 0.6039216
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2856426133668471023, guid: e4bd10a7153186041bafedb36f167652, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -4375543902571788926, guid: c09c7084aff3ce74599dbd03eb39fb7f, type: 3}
+      objectReference: {fileID: 2355012834380943424, guid: f4cab94afa4b44546b242a0b017761ec, type: 3}
     - target: {fileID: 2856426133668471023, guid: e4bd10a7153186041bafedb36f167652, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2856426133668471023, guid: e4bd10a7153186041bafedb36f167652, type: 3}
       propertyPath: m_Color.g
-      value: 0.24060474
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2856426133668471023, guid: e4bd10a7153186041bafedb36f167652, type: 3}
       propertyPath: m_Color.r
-      value: 0.6037736
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3578866631875515478, guid: e4bd10a7153186041bafedb36f167652, type: 3}
       propertyPath: m_LocalScale.x
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  renderer: {fileID: 2272978323954587754}
-  freeSprite: {fileID: 4508227805938523946, guid: c09c7084aff3ce74599dbd03eb39fb7f, type: 3}
+  rendererBody: {fileID: 2272978323954587754}
+  interactedBodySprite: {fileID: -6385601182559380842, guid: 9c038f67e97f5b84cabc4b595997d26b, type: 3}
   rendererLeg: {fileID: 2125502176067630680}
-  freeSpriteleg: {fileID: -5773359683829339392, guid: ffa3a599b047e494facce30aa662e1d9, type: 3}
+  interactedLegsSprite: {fileID: 1502601044726172428, guid: 9a622734f11b6c440b0097fcc03d5b85, type: 3}

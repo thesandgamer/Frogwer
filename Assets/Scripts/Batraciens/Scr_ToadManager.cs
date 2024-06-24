@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Scr_ToadManager : Scr_P_Batracien,IRemoveFromTower
 {
@@ -12,11 +13,13 @@ public class Scr_ToadManager : Scr_P_Batracien,IRemoveFromTower
 
     private IEnumerator moveCoroutine;
     
-    [SerializeField]private SpriteRenderer renderer;
-    [SerializeField]private Sprite freeSprite;
+    [SerializeField]private SpriteRenderer rendererBody;
+    [Tooltip("Srpite pour le corps quand le batracien est enlevé de la tour")]
+    [SerializeField]private Sprite interactedBodySprite;
 
     [SerializeField]private SpriteRenderer rendererLeg;
-    [SerializeField]private Sprite freeSpriteleg;
+    [Tooltip("Srpite pour les jambes quand le batracien est enlevé de la tour")]
+    [SerializeField]private Sprite interactedLegsSprite;
 
 
     private void OnEnable()
@@ -35,9 +38,9 @@ public class Scr_ToadManager : Scr_P_Batracien,IRemoveFromTower
             case ActionTypes.SwipeLeft:
                 if (type == BatracienType.ToadShieldLeft || type == BatracienType.Toad)
                 {
-                    renderer.sprite = freeSprite;
-                    rendererLeg.sprite = freeSpriteleg;
-                    renderer.flipX = true;
+                    rendererBody.sprite = interactedBodySprite;
+                    rendererLeg.sprite = interactedLegsSprite;
+                    rendererBody.flipX = true;
                     rendererLeg.flipX = true;
                     fbManager.ToadDefetead(gameObject,true);
                     StartCoroutine(MoveToad(new Vector3(-1, 0, 0)));
@@ -55,8 +58,8 @@ public class Scr_ToadManager : Scr_P_Batracien,IRemoveFromTower
             case ActionTypes.SwipeRight:
                 if (type == BatracienType.ToadShieldRight || type == BatracienType.Toad)
                 {
-                    renderer.sprite = freeSprite;
-                    rendererLeg.sprite = freeSpriteleg;
+                    rendererBody.sprite = interactedBodySprite;
+                    rendererLeg.sprite = interactedLegsSprite;
 
                     fbManager.ToadDefetead(gameObject, false);
                     StartCoroutine(MoveToad(new Vector3(1,0,0)));
