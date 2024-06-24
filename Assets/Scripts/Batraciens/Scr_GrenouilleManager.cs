@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Scr_GrenouilleManager : Scr_P_Batracien,IRemoveFromTower
 {
+    [Header("Alt sprite when remove from the tower")]
     [SerializeField]private SpriteRenderer renderer;
     [SerializeField]private SpriteRenderer rendererLeg;
     [SerializeField]private Sprite freeSprite;
