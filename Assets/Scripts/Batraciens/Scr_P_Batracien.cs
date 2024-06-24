@@ -20,10 +20,7 @@ public class Scr_P_Batracien : MonoBehaviour
     {
         imageHeight = GetComponentInChildren<SpriteRenderer>().bounds.size.y;
     }
-
-
-
-
+    
 
     protected void RemovedFromTower()
     {
